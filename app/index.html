@@ -3,20 +3,66 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Vice Cover Maker</title>
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+<header class="top">
+  <h1>Vice Cover Maker</h1>
+  <p>Your photo, a caption, and a Vice City grade — a GTA-style poster cover, exported as a PNG.</p>
+</header>
 <main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
-    <p id="status" role="status"></p>
+  <section class="controls" aria-label="Cover controls">
+    <div class="group">
+      <h2>Photos</h2>
+      <label>Photo A <input id="photo-a" type="file" accept="image/*"></label>
+      <label>Photo B <input id="photo-b" type="file" accept="image/*"></label>
+      <label>Photo C <input id="photo-c" type="file" accept="image/*"></label>
+      <div class="row">
+        <button id="sample-pier" type="button">Load pier</button>
+        <button id="sample-boulevard" type="button">Load boulevard</button>
+      </div>
+      <label class="check"><input id="one-photo" type="checkbox" checked> One photo for all panels</label>
+    </div>
+    <div class="group">
+      <h2>Panels</h2>
+      <p class="hint">Click a panel in the preview to select it, then drag to move its photo and scroll to zoom.</p>
+      <div id="panels"></div>
+    </div>
+    <div class="group">
+      <h2>Words</h2>
+      <label>Caption <input id="caption" type="text" maxlength="40" value="SUNSET HEIST"></label>
+      <label>Sub-caption <input id="subcaption" type="text" maxlength="40" value="VICE CITY"></label>
+    </div>
+    <div class="group">
+      <h2>Grade</h2>
+      <label class="check"><input type="radio" name="grade" value="sunset" checked> Sunset</label>
+      <label class="check"><input type="radio" name="grade" value="neon"> Neon</label>
+      <label class="check"><input type="radio" name="grade" value="original"> Original</label>
+    </div>
+    <div class="group">
+      <h2>Layout</h2>
+      <label class="check"><input type="radio" name="layout" value="feature" checked> Feature — one tall panel, two stacked</label>
+      <label class="check"><input type="radio" name="layout" value="grid"> Grid — four panels</label>
+    </div>
+    <div class="group">
+      <h2>Export</h2>
+      <label>Size
+        <select id="size">
+          <option value="1080x1080">1080 x 1080 square</option>
+          <option value="1080x1350">1080 x 1350 portrait</option>
+          <option value="1920x1080">1920 x 1080 wide</option>
+        </select>
+      </label>
+      <button id="export" type="button">Export PNG</button>
+      <p id="status" role="status"></p>
+    </div>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+  <figure class="preview">
+    <canvas id="poster" width="1080" height="1080" aria-label="The cover preview"></canvas>
+    <figcaption>Live preview — click a panel to select it, drag to move its photo, scroll to zoom.</figcaption>
+  </figure>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>
