@@ -10,6 +10,7 @@ export function createState() {
     grade: 'sunset', // 'sunset', 'neon' or 'original'
     caption: 'SUNSET HEIST',
     subcaption: 'VICE CITY',
+    size: '1080x1080',
     onePhoto: true,
     photos: [null, null, null], // one image per slot A, B, C
     panels: [

@@ -199,7 +199,7 @@ document.getElementById('size').addEventListener('change', (e) => {
 
 /** Export: draw the poster at the exact post size and download it as a PNG. */
 document.getElementById('export').addEventListener('click', () => {
-  const [w, h] = SIZES[state.size];
+  const [w, h] = SIZES[state.size] ?? SIZES['1080x1080'];
   const off = document.createElement('canvas');
   off.width = w;
   off.height = h;
